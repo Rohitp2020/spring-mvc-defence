@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: spring-mvc-webapp
+    env: docker
+    plan: free
+    repo: https://github.com/Rohitp2020/spring-mvc-defence.git
+    branch: master
+    buildCommand: "mvn clean package"  # or "mvn clean package" if you're using Maven
+    startCommand: "java -jar target/springsecurity.war"  # Replace with actual WAR path
