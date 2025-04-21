@@ -13,16 +13,16 @@ import com.springsecurity.defence.Aspirant;
 
 public class DefenceDBUtil {
 	
-	static String url = "jdbc:mysql://localhost:3306/defence";
-	static String userName = "root";
-	static String password = "root";
-	static String driver = "com.mysql.cj.jdbc.Driver";
-	
-	
-//	static String url = "jdbc:mysql://avnadmin:AVNS_IBpzNYXm_UnSgV3uUXb@mysql-365964a7-defence-aspirant.j.aivencloud.com:25355/defaultdb?ssl-mode=REQUIRED";
-//	static String userName = "avnadmin";
-//	static String password = "AVNS_IBpzNYXm_UnSgV3uUXb";
+//	static String url = "jdbc:mysql://localhost:3306/defence";
+//	static String userName = "root";
+//	static String password = "root";
 //	static String driver = "com.mysql.cj.jdbc.Driver";
+	
+	
+	static String url = "jdbc:mysql://avnadmin:AVNS_IBpzNYXm_UnSgV3uUXb@mysql-365964a7-defence-aspirant.j.aivencloud.com:25355/defaultdb?ssl-mode=REQUIRED";
+	static String userName = "avnadmin";
+	static String password = "AVNS_IBpzNYXm_UnSgV3uUXb";
+	static String driver = "com.mysql.cj.jdbc.Driver";
 	
 	public static int insertAspirant(HashMap<String, String> data) throws ClassNotFoundException, SQLException{
 		//ArrayList<Aspirant> aspirant = new ArrayList<Aspirant>();
