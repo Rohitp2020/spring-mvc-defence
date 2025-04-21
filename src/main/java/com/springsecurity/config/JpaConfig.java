@@ -40,9 +40,9 @@ public class JpaConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/defence");
-        ds.setUsername("root");
-        ds.setPassword("root");
+        ds.setUrl("jdbc:mysql://avnadmin:AVNS_IBpzNYXm_UnSgV3uUXb@mysql-365964a7-defence-aspirant.j.aivencloud.com:25355/defaultdb?ssl-mode=REQUIRED");
+        ds.setUsername("avnadmin");
+        ds.setPassword("AVNS_IBpzNYXm_UnSgV3uUXb");
         System.out.println("Inside Datasourse");
         return ds;
     }
