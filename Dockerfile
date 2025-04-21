@@ -1,11 +1,14 @@
-# Use official Tomcat with JDK 17
+# Use Maven to build the WAR first
+FROM maven:3.9.3-eclipse-temurin-17 AS builder
+
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Now take the WAR and drop it into Tomcat
 FROM tomcat:9.0-jdk17
 
-# Clean default apps
 RUN rm -rf /usr/local/tomcat/webapps/*
+COPY --from=builder /app/target/springsecurity.war /usr/local/tomcat/webapps/ROOT.war
 
-# Copy your WAR file
-COPY target/springsecurity.war /usr/local/tomcat/webapps/ROOT.war
-
-# Expose the port Tomcat listens on (Render maps this automatically)
 EXPOSE 8080
