@@ -28,12 +28,13 @@ public class HelloWorldController {
 	
 	@GetMapping("/register")
 	public String register() {
-		System.out.println("inside helloWorld aa Controller..");
+		System.out.println("inside register Controller..");
 		return "register";
 	}
 	
 	@GetMapping("/index")
 	public String index() {
+		System.out.println("inside index Controller..");
 		return "index";
 	}
 	

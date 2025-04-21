@@ -92,7 +92,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         .exceptionHandling()
         .authenticationEntryPoint((request, response, authException) -> {
             request.getSession().setAttribute("errorMessage", "Please login first!");
-            response.sendRedirect("/springsecurity/myCustomLogin");
+            response.sendRedirect("/myCustomLogin");
         });
 	}
 	
