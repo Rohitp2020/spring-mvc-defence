@@ -18,7 +18,7 @@ public class DefenceDBUtil {
 //	static String password = "root";
 //	static String driver = "com.mysql.cj.jdbc.Driver";
 	
-	static String url = "postgresql://defence_user:TpHWHvLUveGX2EbQ5BEegArLV1mWCukG@dpg-d02vbv2dbo4c73c4ping-a.oregon-postgres.render.com/defence";
+	static String url = "jdbc:postgresql://defence_user:TpHWHvLUveGX2EbQ5BEegArLV1mWCukG@dpg-d02vbv2dbo4c73c4ping-a.oregon-postgres.render.com/defence";
 	static String userName = "defence_user";
 	static String password = "TpHWHvLUveGX2EbQ5BEegArLV1mWCukG";
 	static String driver = "org.postgresql.Driver";
