@@ -18,6 +18,7 @@ public class DefenceDBUtil {
 //	static String password = "root";
 //	static String driver = "com.mysql.cj.jdbc.Driver";
 	
+	
 	static String url = "mysql://avnadmin:AVNS_IBpzNYXm_UnSgV3uUXb@mysql-365964a7-defence-aspirant.j.aivencloud.com:25355/defaultdb?ssl-mode=REQUIRED";
 	static String userName = "avnadmin";
 	static String password = "AVNS_IBpzNYXm_UnSgV3uUXb";
