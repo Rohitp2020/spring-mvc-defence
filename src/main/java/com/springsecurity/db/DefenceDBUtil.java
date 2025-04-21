@@ -44,6 +44,7 @@ public class DefenceDBUtil {
 			System.out.println("This is my try insert query result::"+rowsAffected);
 		}catch (SQLException s) {
 			System.out.println("This is my catch insert query result::"+rowsAffected);
+			s.printStackTrace();
 		}
 		//int rowsAffected = stmt.executeUpdate(query); 
 		
