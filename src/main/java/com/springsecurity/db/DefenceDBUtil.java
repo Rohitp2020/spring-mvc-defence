@@ -35,16 +35,24 @@ public class DefenceDBUtil {
 		
 		System.out.println(query);
 		
-		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url, userName, password);
-		Statement stmt = con.createStatement();
+		Connection con = null;
 		
 		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userName, password);
+			Statement stmt = con.createStatement();
 			rowsAffected = stmt.executeUpdate(query);
 			System.out.println("This is my try insert query result::"+rowsAffected);
-		}catch (SQLException s) {
-			System.out.println("This is my catch insert query result::"+rowsAffected);
+		}
+		catch (ClassNotFoundException e) {
+	        System.out.println("JDBC Driver not found!");
+	        e.printStackTrace();
+	    }
+		catch (SQLException s) {
+			System.out.println("SQL Exception occurred insert query result::"+rowsAffected);
 			s.printStackTrace();
+		}finally {
+			con.close();
 		}
 		//int rowsAffected = stmt.executeUpdate(query); 
 		
@@ -61,7 +69,7 @@ public class DefenceDBUtil {
 //			aspirant.add(f);
 //		}
 		//System.out.println(advice);
-		con.close();
+		
 		return rowsAffected;
 	}
 	
