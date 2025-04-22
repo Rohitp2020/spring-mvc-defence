@@ -29,7 +29,7 @@ public class DefenceDBUtil {
 		String aspirantName = data.get("NAME");
 		String aspirantEmail = data.get("EMAIL");
 		String aspirantPass  = data.get("PASS");
-		String query = "INSERT INTO NTS_DEFENCE_REGISTER_MT (name, email, password, role) VALUES ('"
+		String query = "INSERT INTO NTS_STUDENT_DEFENCE_REGISTER_MT (name, email, password, role) VALUES ('"
 			    + aspirantName + "','" + aspirantEmail + "','" + aspirantPass + "', 'admin')";
 		int rowsAffected = 0;
 		
