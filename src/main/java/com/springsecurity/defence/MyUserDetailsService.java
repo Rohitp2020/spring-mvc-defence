@@ -1,5 +1,7 @@
 package com.springsecurity.defence;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,19 +32,17 @@ public class MyUserDetailsService implements UserDetailsService {
                 .build();
     }
     
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        System.out.println("Inside userdetails");
-//
-//        if ("rohitpunetha2001@gmail.com".equals(email)) {
-//            return User.builder()
-//                    .username("rohitpunetha2001@gmail.com")
-//                    .password("rohit")
-//                    .roles("admin")
-//                    .build();
-//        }
-//
-//        throw new UsernameNotFoundException("User not found with email: " + email);
-//    }
+    public UserEntity insertUser(HashMap<String, String> data) {
+    	UserEntity newUser = new UserEntity();
+    	newUser.setName(data.get("NAME"));
+        newUser.setEmail(data.get("EMAIL"));
+        newUser.setPassword(data.get("PASS")); // Make sure to encode it before saving
+        newUser.setRole("admin");
+        
+        UserEntity saved = userRepository.save(newUser);
+        //System.out.println("insertUser: "+saved.getId());
+        return saved;
+    }
+    
 }
 

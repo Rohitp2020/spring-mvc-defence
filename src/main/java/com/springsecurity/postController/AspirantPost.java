@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springsecurity.db.DefenceDBUtil;
 import com.springsecurity.defence.Aspirant;
+import com.springsecurity.defence.MyUserDetailsService;
+import com.springsecurity.defence.UserEntity;
+import com.springsecurity.defence.UserRepository;
 
 @Controller
 public class AspirantPost {
+	
+	@Autowired
+    private MyUserDetailsService myUserDetailsService;
 	
 	
 	@PostMapping("/registerUser")
@@ -34,8 +41,10 @@ public class AspirantPost {
 		
 		System.out.println("This is logg: "+registered);
 		
-		int aspirant = DefenceDBUtil.insertAspirant(registered);
-		if(aspirant>0) {
+		//int aspirant = DefenceDBUtil.insertAspirant(registered);
+		UserEntity aspirant = myUserDetailsService.insertUser(registered);
+		//System.out.println("This is inside Aspirant:::"+aspirant.getId());
+		if(aspirant.getId()>0) {
 			model.addAttribute("successFlag", "Y");
 			return "redirect:/myCustomLogin";
 		}
