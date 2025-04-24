@@ -38,8 +38,15 @@ public class MyUserDetailsService implements UserDetailsService {
         newUser.setEmail(data.get("EMAIL"));
         newUser.setPassword(data.get("PASS")); // Make sure to encode it before saving
         newUser.setRole("admin");
+        UserEntity saved = null;
         
-        UserEntity saved = userRepository.save(newUser);
+        try {
+        	saved = userRepository.save(newUser);
+        }catch(Exception e) {
+        	System.out.println("Your insertUser is in catch save: "+saved);
+        	//e.printStackTrace();
+        }
+        
         //System.out.println("insertUser: "+saved.getId());
         return saved;
     }

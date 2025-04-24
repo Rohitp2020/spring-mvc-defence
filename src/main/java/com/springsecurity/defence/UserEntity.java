@@ -8,12 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "NTS_STUDENT_DEFENCE_REGISTER_MT")
+@Table(name = "NTS_DEFENCE_ASPIRANT_REGISTER_MT")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique=true)
     private String email;
     private String password;
     private String role;

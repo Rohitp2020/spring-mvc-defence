@@ -44,7 +44,7 @@ public class AspirantPost {
 		//int aspirant = DefenceDBUtil.insertAspirant(registered);
 		UserEntity aspirant = myUserDetailsService.insertUser(registered);
 		//System.out.println("This is inside Aspirant:::"+aspirant.getId());
-		if(aspirant.getId()>0) {
+		if(aspirant != null) {
 			model.addAttribute("successFlag", "Y");
 			return "redirect:/myCustomLogin";
 		}
