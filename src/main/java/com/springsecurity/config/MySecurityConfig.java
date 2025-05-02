@@ -83,7 +83,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.defaultSuccessUrl("/index", true)  
 		.usernameParameter("email") 
 	    .passwordParameter("password") 
-	    .failureUrl("/springsecurity/myCustomLogin?error=true")
+	    //.failureUrl("/springsecurity/myCustomLogin?error=true")  // for dev env
+	    .failureUrl("/myCustomLogin?error=true")    // for prod
 		.and()
 		.httpBasic()
 		.and()
@@ -93,7 +94,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         .exceptionHandling()
         .authenticationEntryPoint((request, response, authException) -> {
             request.getSession().setAttribute("errorMessage", "Please login first!");
-            response.sendRedirect("/springsecurity/myCustomLogin");
+            //response.sendRedirect("/springsecurity/myCustomLogin");  // for dev env
+            response.sendRedirect("/myCustomLogin");  // for prod env
         });
 	}
 	
