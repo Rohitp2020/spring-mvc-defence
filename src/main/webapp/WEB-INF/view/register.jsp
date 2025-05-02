@@ -115,7 +115,7 @@ button:hover {
 		<h1>Register for Defense Aspirants Guide</h1>
 		<nav>
 			<a href="<%= request.getContextPath() %>/myCustomLogin">Login</a> | <a
-				href="<%= request.getContextPath() %>/index">Home</a>
+				href="<%= request.getContextPath() %>/index">Index</a>
 		</nav>
 	</header>
 

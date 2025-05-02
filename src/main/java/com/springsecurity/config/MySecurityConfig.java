@@ -70,11 +70,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/hello").authenticated()
 		.antMatchers("/bye").authenticated()
 		.antMatchers("/register").permitAll()
+		.antMatchers("/home").permitAll()
 		.antMatchers("/index").authenticated()
 		//.antMatchers("/process-defence").permitAll()
 		.antMatchers("/helloWorld").permitAll()
 		.antMatchers("/registerUser").permitAll()
-		.antMatchers("/Images/**", "/css/**", "/js/**").permitAll()
+		.antMatchers("/Images/**","/Images1/**","/css/**", "/js/**").permitAll()
 		.and()
 		.formLogin()
 		.loginPage("/myCustomLogin")
@@ -82,7 +83,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.defaultSuccessUrl("/index", true)  
 		.usernameParameter("email") 
 	    .passwordParameter("password") 
-	    .failureUrl("/myCustomLogin?error=true")
+	    .failureUrl("/springsecurity/myCustomLogin?error=true")
 		.and()
 		.httpBasic()
 		.and()
@@ -92,7 +93,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         .exceptionHandling()
         .authenticationEntryPoint((request, response, authException) -> {
             request.getSession().setAttribute("errorMessage", "Please login first!");
-            response.sendRedirect("/myCustomLogin");
+            response.sendRedirect("/springsecurity/myCustomLogin");
         });
 	}
 	

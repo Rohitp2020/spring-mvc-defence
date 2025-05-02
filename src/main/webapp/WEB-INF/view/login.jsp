@@ -118,8 +118,9 @@ button:hover {
 	<header>
 		<h1>Login to Defense Aspirants Guide</h1>
 		<nav>
-			<a href="<%=request.getContextPath()%>/register">Register</a> | <a
-				href="/index">Home</a>
+			<a href="<%=request.getContextPath()%>/register">Register</a> | 
+				<a href="<%=request.getContextPath()%>/index">Index</a> | 
+				<a href="<%=request.getContextPath()%>/home">Home</a>
 			<div class="logo">
 				<img src= "<%=request.getContextPath()%>/Images/airforcelogo.jpg" alt="Army Logo"
 					height="150px" width="200px"> <img

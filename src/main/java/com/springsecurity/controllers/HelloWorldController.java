@@ -38,6 +38,12 @@ public class HelloWorldController {
 		return "index";
 	}
 	
+	@GetMapping("/home")
+	public String home() {
+		System.out.println("inside home Controller..");
+		return "home";
+	}
+	
 	@ResponseBody
 	@GetMapping("/hello")
 	public String hello() {
@@ -47,7 +53,7 @@ public class HelloWorldController {
 	@ResponseBody
 	@GetMapping("/bye")
 	public String bye() {
-		return "Bye from Rohit";
+		return "Bye";
 	}
 
 }

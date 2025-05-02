@@ -101,6 +101,11 @@ button:hover {
                 document.getElementById("logoutForm").submit(); // Submit form if "Yes"
             }
         }
+        
+        function autoLogout() {
+        	event.preventDefault();
+        	document.getElementById("logoutForm").submit();
+        }
 </script>
 </head>
 <body>
@@ -122,7 +127,7 @@ button:hover {
     <section>
         <div class="form-container">
             <h2>Check Eligibility</h2>
-            <form id="eligibilityForm" action="checkEligibility" method="post">
+            <form id="eligibilityForm" action="${pageContext.request.contextPath}/eligible" method="GET">
                 <label for="age">Your Age:</label>
                 <input type="number" id="age" name="age" required>
 
@@ -142,7 +147,7 @@ button:hover {
                     <option value="Navy">Navy</option>
                 </select>
 
-                <button type="submit">Check Eligibility</button>
+                <button type="submit" onclick="autoLogout()">Check Eligibility</button>
             </form>
         </div>
 

@@ -18,12 +18,18 @@ public class LoginController {
 	
 	@GetMapping("/")
     public String redirectToLogin() {
-        return "redirect:/myCustomLogin";
+        //return "redirect:/myCustomLogin";
+        return "redirect:/home";
     }
 	
 	@GetMapping("/myCustomLogin")
 	public String myCustomLogin() {
 		return "login";
+	}
+	
+	@GetMapping("/eligible")
+	public String eligible() {
+		return "redirect:/home";
 	}
 	
 //	@PostMapping("/process-defence")
