@@ -3,15 +3,15 @@ package com.springsecurity.controllers;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.springsecurity.db.DefenceDBUtil;
-import com.springsecurity.postController.LoginPost;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.springsecurity.defence.MyUserDetailsService;
+import com.springsecurity.defence.UserEntity;
 
 @Controller
 public class LoginController {
@@ -22,15 +22,63 @@ public class LoginController {
         return "redirect:/home";
     }
 	
+	@GetMapping("/register")
+	public String register() {
+		System.out.println("inside register Controller..");
+		return "register";
+	}
+	
+	@GetMapping("/index")
+	public String index() {
+		System.out.println("inside index Controller..");
+		return "index";
+	}
+	
+	@GetMapping("/home")
+	public String home() {
+		System.out.println("inside home Controller..");
+		return "home";
+	}
+	
+	@ResponseBody
+	@GetMapping("/hello")
+	public String hello() {
+		return "Hello from World";
+	}
+	
 	@GetMapping("/myCustomLogin")
 	public String myCustomLogin() {
 		return "login";
 	}
 	
-//	@GetMapping("/eligible")
-//	public String eligible() {
-//		return "redirect:/home";
-//	}
+	@Autowired
+    private MyUserDetailsService myUserDetailsService;
+	
+	
+	@PostMapping("/registerUser")
+	public String registerUser(@RequestParam String name,@RequestParam String username,@RequestParam String password, Model model) throws SQLException,NullPointerException, ClassNotFoundException{
+		
+		
+		System.out.println("registerUser hit");
+		HashMap<String, String> registered = new HashMap<>();
+		String flag = "N";
+		registered.put("NAME", name);
+		registered.put("EMAIL", username);
+		registered.put("PASS", password);
+		
+		System.out.println("This is logg: "+registered);
+		
+		//int aspirant = DefenceDBUtil.insertAspirant(registered);
+		UserEntity aspirant = myUserDetailsService.insertUser(registered);
+		//System.out.println("This is inside Aspirant:::"+aspirant.getId());
+		if(aspirant != null) {
+			model.addAttribute("successFlag", "Y");
+			return "redirect:/myCustomLogin";
+		}
+		model.addAttribute("successFlag", flag);
+		return "/register";
+		
+	}
 	
 	@PostMapping("/eligible")
 	public String eligible(@RequestParam String education,@RequestParam String branch,@RequestParam int age, Model model) throws SQLException,NullPointerException, ClassNotFoundException{
@@ -59,26 +107,5 @@ public class LoginController {
 		model.addAttribute("successFlag", "N");
 		return "index";
 	}
-	
-//	@PostMapping("/process-defence")
-//	public String enteredLogin(@RequestParam String username,@RequestParam String password, Model model) throws SQLException,NullPointerException, ClassNotFoundException{
-//		System.out.println("enteredLogin hit");
-//		HashMap<String, String> entered = new HashMap<>();
-//		String flag = "N";
-//		entered.put("EMAIL", username);
-//		entered.put("PASS", password);
-//		
-//		System.out.println("This is logg: "+entered);
-//		
-//		HashMap<String, String> aspirant = DefenceDBUtil.selectAspirant(entered);
-//		if(aspirant.get("email") != null || aspirant.get("pass") != null) {
-//			//model.addAttribute("successFlag", "Y");
-//			//new LoginPost(aspirant.get("email"),aspirant.get("pass"));
-//			return "login";
-//		}
-//		model.addAttribute("successFlag", flag);
-//		return "register";
-//	}
-		
 
 }

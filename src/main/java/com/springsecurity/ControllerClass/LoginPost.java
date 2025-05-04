@@ -1,4 +1,4 @@
-package com.springsecurity.postController;
+package com.springsecurity.ControllerClass;
 
 public class LoginPost {
 	

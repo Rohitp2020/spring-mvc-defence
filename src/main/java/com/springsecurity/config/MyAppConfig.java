@@ -24,10 +24,7 @@ public class MyAppConfig implements WebMvcConfigurer{
 		return viewResolver;
 	}
 	
-//	@Bean
-//	PasswordEncoder getPasswordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
+	
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/Images/**")

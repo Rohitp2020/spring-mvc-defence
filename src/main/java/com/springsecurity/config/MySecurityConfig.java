@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
+import com.springsecurity.ControllerClass.LoginPost;
 import com.springsecurity.defence.MyUserDetailsService;
-import com.springsecurity.postController.LoginPost;
 
 //this class helps to create the spring security filter change
 
@@ -26,16 +26,6 @@ import com.springsecurity.postController.LoginPost;
 @ComponentScan(basePackages = "com.springsecurity")
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	private PasswordEncoder BCryptPasswordEncoder;
-
-	// this 'AuthenticationManagerBuilder' helps to create user and store it in
-	// memory
-	
-//	 @Bean
-//	    public PasswordEncoder passwordEncoder() {
-//	        return new BCryptPasswordEncoder();
-//	    }
 	@Bean
 	 public PasswordEncoder passwordEncoder() {
 		    return NoOpPasswordEncoder.getInstance();
@@ -44,23 +34,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 	 @Autowired
 	 private MyUserDetailsService myUserDetailsService;
 	 
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication() // this is storing our user in tomcat server memory only.
-//			.withUser("rohitpunetha2001@gmail.com").password(passwordEncoder().encode("rohit")).roles("admin")
-//			.and()
-//		    .withUser(LoginPost.getEmail()).password(passwordEncoder().encode(LoginPost.getPass())).roles("admin");
-//	}
-	 
 	 @Override
 	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	     auth.userDetailsService(myUserDetailsService)
 	         .passwordEncoder(passwordEncoder());
 	     System.out.println("Configure");
 	 }
-
-	 
-
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -73,15 +52,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/home").permitAll()
 		.antMatchers("/index").authenticated()
 		.antMatchers("/eligible").authenticated()
-		
 		.antMatchers("/navyAfterGraduation").authenticated()
 		.antMatchers("/airforceAfterGraduation").authenticated()
 		.antMatchers("/armyAfterGraduation").authenticated()
 		.antMatchers("/navyAfter12th").authenticated()
 		.antMatchers("/airforceAfter12th").authenticated()
 		.antMatchers("/armyAfter12th").authenticated()
-		
-		//.antMatchers("/process-defence").permitAll()
 		.antMatchers("/helloWorld").permitAll()
 		.antMatchers("/registerUser").permitAll()
 		.antMatchers("/Images/**","/Images1/**","/css/**", "/js/**").permitAll()
@@ -107,6 +83,31 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
             response.sendRedirect("/myCustomLogin");  // for prod env
         });
 	}
+	
+	
+	
+	
+	
+	
+	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.inMemoryAuthentication() // this is storing our user in tomcat server memory only.
+//			.withUser("rohitpunetha2001@gmail.com").password(passwordEncoder().encode("rohit")).roles("admin")
+//			.and()
+//		    .withUser(LoginPost.getEmail()).password(passwordEncoder().encode(LoginPost.getPass())).roles("admin");
+//	}
+	
+//	@Autowired
+//	private PasswordEncoder BCryptPasswordEncoder;
+
+	// this 'AuthenticationManagerBuilder' helps to create user and store it in
+	// memory
+	
+//	 @Bean
+//	    public PasswordEncoder passwordEncoder() {
+//	        return new BCryptPasswordEncoder();
+//	    }
 	
 //	@Override
 //	public void configure(WebSecurity web) throws Exception {
