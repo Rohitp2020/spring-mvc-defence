@@ -27,9 +27,37 @@ public class LoginController {
 		return "login";
 	}
 	
-	@GetMapping("/eligible")
-	public String eligible() {
-		return "redirect:/home";
+//	@GetMapping("/eligible")
+//	public String eligible() {
+//		return "redirect:/home";
+//	}
+	
+	@PostMapping("/eligible")
+	public String eligible(@RequestParam String education,@RequestParam String branch,@RequestParam int age, Model model) throws SQLException,NullPointerException, ClassNotFoundException{
+		System.out.println("Eligible");
+		System.out.println("Education: "+education);
+		System.out.println("Branch: "+branch);
+		if(age>0) {
+			if(education.equalsIgnoreCase("10th") || education.equalsIgnoreCase("12th")) {
+				if(branch.equalsIgnoreCase("Army")) {
+					return "armyAfter12th";
+				}else if(branch.equalsIgnoreCase("AirForce")) {
+					return "airforceAfter12th";
+				}else {
+					return "navyAfter12th";
+				}
+			}else {
+				if(branch.equalsIgnoreCase("Army")) {
+					return "armyAfterGraduation";
+				}else if(branch.equalsIgnoreCase("AirForce")) {
+					return "airforceAfterGraduation";
+				}else {
+					return "navyAfterGraduation";
+				}
+			}
+		}
+		model.addAttribute("successFlag", "N");
+		return "index";
 	}
 	
 //	@PostMapping("/process-defence")

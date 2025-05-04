@@ -127,7 +127,8 @@ button:hover {
     <section>
         <div class="form-container">
             <h2>Check Eligibility</h2>
-            <form id="eligibilityForm" action="${pageContext.request.contextPath}/eligible" method="GET">
+            <form id="eligibilityForm" action="${pageContext.request.contextPath}/eligible" method="POST">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <label for="age">Your Age:</label>
                 <input type="number" id="age" name="age" required>
 
@@ -147,8 +148,13 @@ button:hover {
                     <option value="Navy">Navy</option>
                 </select>
 
-                <button type="submit" onclick="autoLogout()">Check Eligibility</button>
+                <button type="submit">Check Eligibility</button>
             </form>
+            <c:if test="${successFlag == 'N'}">
+				<script>
+        			alert("Oops!! Unable to check eligibility, Please enter right Age.");
+    			</script>
+			</c:if>
         </div>
 
         <div id="result" class="result-container" style="display:none;">

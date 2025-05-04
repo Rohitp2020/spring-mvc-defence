@@ -72,6 +72,15 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/register").permitAll()
 		.antMatchers("/home").permitAll()
 		.antMatchers("/index").authenticated()
+		.antMatchers("/eligible").authenticated()
+		
+		.antMatchers("/navyAfterGraduation").authenticated()
+		.antMatchers("/airforceAfterGraduation").authenticated()
+		.antMatchers("/armyAfterGraduation").authenticated()
+		.antMatchers("/navyAfter12th").authenticated()
+		.antMatchers("/airforceAfter12th").authenticated()
+		.antMatchers("/armyAfter12th").authenticated()
+		
 		//.antMatchers("/process-defence").permitAll()
 		.antMatchers("/helloWorld").permitAll()
 		.antMatchers("/registerUser").permitAll()
