@@ -135,7 +135,7 @@ button:hover {
                 <label for="education">Your Education Level:</label>
                 <select id="education" name="education" required>
                     <option value="">Select Education Level</option>
-                    <option value="10th">10th</option>
+                    <!--  <option value="10th">10th</option> -->
                     <option value="12th">12th</option>
                     <option value="Graduate">Graduate</option>
                     <option value="Postgraduate">Postgraduate</option>
